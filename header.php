@@ -1,4 +1,5 @@
 <?php
+include("./config/load-language.php");
 
 if(basename($_SERVER['PHP_SELF']) != "login.php"){
 	// include the configs / constants for the database connection
@@ -27,25 +28,24 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 	
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css"/>
-	
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li <?php if(basename($_SERVER['PHP_SELF']) == "index.php"){ echo 'class="active"';} ?>><a href="./">Inicio</a></li>
+        	<li <?php if(basename($_SERVER['PHP_SELF']) == "professor.php"){ echo 'class="active"';} ?>><a href="./restricted"><?php echo _("Área privada"); ?></a></li>
+			<li <?php if(basename($_SERVER['PHP_SELF']) == "index.php"){ echo 'class="active"';} ?>><a href="./"><?php echo _("Inicio"); ?></a></li>
           <?php 
 			// ... ask if we are logged in here:
 			if (!$login->isUserLoggedIn() == true) { ?>
-				<li <?php if(basename($_SERVER['PHP_SELF']) == "register.php"){ echo 'class="active"';} ?>><a href="./register" >Registrarse</a></li>
-				<li <?php if(basename($_SERVER['PHP_SELF']) == "login.php"){ echo 'class="active"';} ?>><a href="./login">Acceso</a></li>
+				<li <?php if(basename($_SERVER['PHP_SELF']) == "register.php"){ echo 'class="active"';} ?>><a href="./register" ><?php echo _("Registrarse"); ?></a></li>
+				<li <?php if(basename($_SERVER['PHP_SELF']) == "login.php"){ echo 'class="active"';} ?>><a href="./login"><?php echo _("Acceso"); ?></a></li>
 			<?php }else{ ?>
-				<li <?php if(basename($_SERVER['PHP_SELF']) == "login.php"){ echo 'class="active"';} ?>><a href="./login">Tu cuenta</a></li>
-				<li><a href="?logout">Salir</a></li>
+				<li <?php if(basename($_SERVER['PHP_SELF']) == "login.php"){ echo 'class="active"';} ?>><a href="./login"><?php echo _("Tu cuenta"); ?></a></li>
+				<li><a href="?logout"><?php echo _("Salir"); ?></a></li>
 			<?php } ?>
         </ul>
-        <h3 class="text-muted">Máster Ing. Web - Uniovi</h3>
+        <h3 class="text-muted"><?php echo _("Máster Ing. Web - Uniovi"); ?></h3>
       </div>

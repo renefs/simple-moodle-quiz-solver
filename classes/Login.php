@@ -58,7 +58,9 @@ class Login
         // TODO: adapt the minimum check like in 0-one-file version
 
         // create/read session
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+			session_start();
+		}
 
         // check the possible login actions:
         // 1. logout (happen when user clicks logout button)
