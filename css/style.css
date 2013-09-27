@@ -77,3 +77,11 @@ body {
     border-bottom: 0;
   }
 }
+
+form.quiz-form{
+	margin:20px 0;
+}
+
+form.quiz-form label{
+	margin:0 0 0 10px;
+}

@@ -1,0 +1,18 @@
+answer p, pre{
+	display:inline-block;
+}
+.correct{ 
+	color: green;
+}
+
+label p{
+	margin: 0;
+}
+
+.feedback p{
+	background-color: fcf8e3;
+	border: 1px solid #c09853;
+	padding: 5px;
+	border-radius: 5px;
+	display: block;
+}
