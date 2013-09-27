@@ -3,8 +3,9 @@
 	$siteLanguages=array("es","us");
 	//Si se pone de manera manual, debe tener preferencia.
 	//Se asigna a la sesión el idioma seleccionado
-	
-	$languageTemp=stripcslashes($_COOKIE['lang_miw_rfs']);
+	$languageTemp='es_ES';
+	if(isset($_COOKIE['lang_miw_rfs']))
+		$languageTemp=stripcslashes($_COOKIE['lang_miw_rfs']);
 	//Si el usuario ha pulsado el botón
 	if (isset($_GET['lang'])){
 		
