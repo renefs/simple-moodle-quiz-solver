@@ -1,6 +1,6 @@
 <?php require_once("./header.php"); ?>
       <div class="jumbotron">
-        <h1><?php echo _("Lenguajes y estándares de la web"); ?></h1>
+        <h1><?php echo _("Módulo de PHP y XML"); ?></h1>
         <p class="lead"><?php echo _("Página de <strong>René Fernández Sánchez - UO179476</strong>, de la asignatura \"Lenguajes y estándares de la web\" del Máster de Ing. Web de Uniovi."); ?></p>
         <p><a class="btn btn-lg btn-success" href="./upload-test.php"><?php echo _("Subir test en XML"); ?></a> <a class="btn btn-lg btn-primary" href="./do-test.php" title="Realizar test de ejemplo"><?php echo _("Realizar test de ejemplo"); ?></a></p>
       </div>

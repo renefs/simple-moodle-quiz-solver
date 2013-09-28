@@ -1,7 +1,7 @@
 <div class="footer">
 		<div class="row">
 			<div class="col-md-6">
-				<p>&copy; René Fernández Sánchez - UO179476 - 2013</p>
+				<p>&copy; 2013 <a href="http://renefernandez.com" title="René Fernández">René Fernández Sánchez</a> - UO179476</p>
 			</div>
 			<div class="col-md-2 col-md-offset-4">
 				<p><a href="?lang=es" title="Cambiar idioma a español">Español</a> - <a href="?lang=en" title="Switch language to english">English</a></p>

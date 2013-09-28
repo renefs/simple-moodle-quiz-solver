@@ -47,5 +47,5 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 				<li><a href="?logout"><?php echo _("Salir"); ?></a></li>
 			<?php } ?>
         </ul>
-        <h3 class="text-muted"><?php echo _("Máster Ing. Web - Uniovi"); ?></h3>
+        <h3 class="text-muted"><?php echo _("Lenguajes y estándares de la web"); ?></h3>
       </div>

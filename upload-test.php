@@ -23,13 +23,15 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 			// ... ask if we are logged in here:
 			if ($login->isUserLoggedIn() == true) { ?>
 				<!-- register form -->
-				<form method="post" action="/do-test.php" name="registerform" class="form-horizontal" role="form">
+				<form method="post" action="./do-test.php" name="registerform" class="form-horizontal" role="form" enctype="multipart/form-data">
 				    
 				    <div class="form-group">
-						<label for="exampleInputFile">Seleccionar archivo</label>
-						<input type="file" id="exampleInputFile">
-						<p class="help-block"><?php echo _('Elige un archivo de test de Moodle. Debe ser .xml.'); ?>.</p>
+						<label for="fileXML"><?php echo _("Seleccionar archivo"); ?></label>
+						<input type="file" id="fileXML" name="fileXML" />
+						<p class="help-block"><?php echo _('Elige un archivo de test de Moodle. Debe ser .xml y ser menor de 500kb.'); ?>.</p>
 					</div>
+					
+					<input type="hidden" name="upload_xml" value="3d22f3e85803089360bddc2dac2d39fe" />
 				    
 				    <div class="form-group">
 				    	<div class="col-lg-10">
