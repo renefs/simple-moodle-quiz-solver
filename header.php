@@ -35,6 +35,7 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
+        	<li <?php if(basename($_SERVER['PHP_SELF']) == "marks.php"){ echo 'class="active"';} ?>><a href="./marks"><?php echo _("Puntuaciones"); ?></a></li>
         	<li <?php if(basename($_SERVER['PHP_SELF']) == "professor.php"){ echo 'class="active"';} ?>><a href="./restricted"><?php echo _("Área privada"); ?></a></li>
 			<li <?php if(basename($_SERVER['PHP_SELF']) == "index.php"){ echo 'class="active"';} ?>><a href="./"><?php echo _("Inicio"); ?></a></li>
           <?php 

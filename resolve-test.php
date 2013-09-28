@@ -49,29 +49,57 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 				 		
 				 		echo "<p><strong>".$_POST['questiontext_'.$identifier]."</strong></p>";
 				 		
-				 		if($_POST['select_'.$identifier] == $_POST['correct_'.$identifier]){
-				 			echo "<p class='text-success'><em>Seleccionada</em>: ".$_POST['select_'.$identifier]."</p>";
-				 			echo "<p class='text-success'><em>Correcta</em>: ".$_POST['correct_'.$identifier]."</p>";
-				 		}else{
-					 		echo "<p class='text-danger'><em>Seleccionada</em>: ".$_POST['select_'.$identifier]."</p>";
-				 			echo "<p class='text-danger'><em>Correcta</em>: ".$_POST['correct_'.$identifier]."</p>";
+				 		if(isset($_POST['select_'.$identifier])){
+				 		
+				 			$prefix = '<p>';
+				 			$sufix = '</p>';
+				 			
+				 			if (substr($_POST['correct_'.$identifier], 0, strlen($prefix)) == $prefix) {
+					 			$_POST['correct_'.$identifier] = substr($_POST['correct_'.$identifier], strlen($prefix));
+					 		}
+					 		
+					 		if (substr($_POST['correct_'.$identifier], 0, strlen($sufix)) == $sufix) {
+					 			$_POST['correct_'.$identifier] = substr($_POST['correct_'.$identifier], strlen($sufix));
+					 		}
+					 		
+					 		if (substr($_POST['select_'.$identifier], 0, strlen($prefix)) == $prefix) {
+					 			$_POST['select_'.$identifier] = substr($_POST['select_'.$identifier], strlen($prefix));
+					 		}
+					 		
+					 		if (substr($_POST['select_'.$identifier], 0, strlen($sufix)) == $sufix) {
+					 			$_POST['select_'.$identifier] = substr($_POST['select_'.$identifier], strlen($sufix));
+					 		}
+				 		
+				 		
+					 		if($_POST['select_'.$identifier] == $_POST['correct_'.$identifier]){
+					 			echo "<p class='text-success'><em>Seleccionada</em>: ".$_POST['select_'.$identifier]."</p>";
+					 			echo "<p class='text-success'><em>Correcta</em>: ".$_POST['correct_'.$identifier]."</p>";
+					 		}else{
+						 		echo "<p class='text-danger'><em>Seleccionada</em>: ".$_POST['select_'.$identifier]."</p>";
+					 			echo "<p class='text-danger'><em>Correcta</em>: ".$_POST['correct_'.$identifier]."</p>";
+					 		}
+					 		
+					 		if($_POST['select_'.$identifier] == $_POST['correct_'.$identifier]){
+					 		
+					 			echo "<p class='text-success'><em>Puntuación</em>: ".$_POST['fraction_'.$identifier.'_correct']."</p>";
+					 			$points+=$_POST['fraction_'.$identifier.'_correct'];
+					 		
+					 		}else{
+					 			echo "<p class='text-danger'><em>Puntuación</em>: ".$_POST['fraction_'.$identifier.'_incorrect']."</p>";
+					 			$points+=$_POST['fraction_'.$identifier.'_incorrect'];
 				 		}
+					 		
+					 	}else{
+						 	
+						 	echo "<p class='text-warning'><em>Correcta</em>: ".$_POST['correct_'.$identifier]."</p>";
+						 	echo "<p class='text-warning'><em>Puntuación</em>: 0</p>";
+					 	}				 	
 				 		
 				 		$totalCorrectPoints+=$_POST['fraction_'.$identifier.'_correct'];
 				 		
-				 		if($_POST['select_'.$identifier] == $_POST['correct_'.$identifier]){
-					 		
-					 		echo "<p class='text-success'><em>Puntuación</em>: ".$_POST['fraction_'.$identifier.'_correct']."</p>";
-					 		$points+=$_POST['fraction_'.$identifier.'_correct'];
-					 		
-				 		}else{
-					 		echo "<p class='text-danger'><em>Puntuación</em>: ".$_POST['fraction_'.$identifier.'_incorrect']."</p>";
-					 		$points+=$_POST['fraction_'.$identifier.'_incorrect'];
-				 		}
-				 		
 				 	}
 				 	
-				 	echo "<p><em>TOTAL</em>: ".$points." / ". $totalCorrectPoints ."</p>";
+				 	echo "<p><em>".('PUNTUACIÓN TOTAL')."</em>: ".$points." / ". $totalCorrectPoints ."</p>";
 				 	
 				 	// create a database connection, using the constants from config/db.php (which we loaded in index.php)
 		            $db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -83,13 +111,13 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 		                //$this->user_name = $this->db_connection->real_escape_string($_POST['user_name']);
 		                // database query, getting all the info of the selected user
 		                $userId = $db_connection->query("SELECT user_id FROM users WHERE user_name = '" . $_SESSION['user_name'] . "';");
-		                var_dump($userId);
+		                
 		                 if ($userId->num_rows == 1) {
 
 							 // get result row (as an object)
 							 $result_row = $userId->fetch_object();
 							 $userId = $result_row->user_id;
-							 echo "user id:".$userId;
+							 
 						}else{
 							
 							echo "Error al obtener el usuario";
@@ -98,20 +126,18 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 		                
 		                $insertQuery = "INSERT INTO tests (user_id,file,points,total_points) VALUES ('".$userId."','prueba.xml','".$points."','".$totalCorrectPoints."');";
 		                
-		                echo $insertQuery;
-		                
 		                $checklogin = $db_connection->query($insertQuery);
 		
 		                if($checklogin){
 			                
-			                echo "se ha guardado el test";
+			                echo "<p class='alert alert-success'>"._('Se ha guardado el test')."</p>";
 			                
 		                }else{
-			                echo "no se ha guardado el test";
+			                echo "<p class='alert alert-danger'>"._('No se ha guardado el test')."</p>";
 		                }
 		                
 		            } else {
-		                $this->errors[] = "Database connection problem.";
+		                $this->errors[] = "<p class='alert alert-danger'>"._('Problema de conexión con la base de datos')."</p>";
 		            }
 				 	
 				 	

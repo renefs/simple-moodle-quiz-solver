@@ -1,10 +1,25 @@
-<?php require_once("./header.php"); ?>
+<?php require_once("./header.php"); 
+
+
+if(basename($_SERVER['PHP_SELF']) != "login.php"){
+	// include the configs / constants for the database connection
+	require_once("config/db.php");
+	
+	// load the login class
+	require_once("classes/Login.php");
+	
+	// create a login object. when this object is created, it will do all login/logout stuff automatically
+	// so this single line handles the entire login process. in consequence, you can simply ...
+	$login = new Login();
+}
+?>
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
-			<h2><?php echo _('Tu cuenta') ;?></h2>
 			
-			<p><?php echo _("A continuación se muestra un listado con todos los tests que has realizado y todas las notas que has obtenido."); ?></p>
+			<h1><?php echo _("Puntuaciones"); ?></h1>
+			
+			<p><?php echo _("A continuación se muestran las notas de todos los usuarios que han realizado alguna prueba de test."); ?></p>
 			
 			<?php
 				
@@ -17,24 +32,14 @@
 	                // escape the POST stuff
 	                //$this->user_name = $this->db_connection->real_escape_string($_POST['user_name']);
 	                // database query, getting all the info of the selected user
-	                $userId = $db_connection->query("SELECT user_id FROM users WHERE user_name = '" . $_SESSION['user_name'] . "';");
-	                 if ($userId->num_rows == 1) {
-
-						 // get result row (as an object)
-						 $result_row = $userId->fetch_object();
-						 $userId = $result_row->user_id;
-					}else{
-						
-						echo "Error al obtener el usuario";
-						
-					}
 	                
-	                $checklogin = $db_connection->query("SELECT date, file, points, total_points FROM tests WHERE user_id = '".$userId."';");
+	                $checklogin = $db_connection->query("SELECT * FROM users INNER JOIN tests ON users.user_id=tests.user_id ORDER BY points DESC;");
 	
 	
 					echo '<table class="table table-bordered">';
 						
 						echo "<tr>";
+							echo "<th>"._("Usuario")."</th>";
 							echo "<th>"._("Archivo")."</th>";
 							echo "<th>"._("Fecha")."</th>";	
 							echo "<th>"._("Puntos obtenidos")."</th>";	
@@ -44,6 +49,12 @@
 					while ($array = $checklogin->fetch_object()) {
 					
 						echo "<tr>";
+						
+								echo "<td>";
+									
+									echo $array->user_name;
+						
+								echo "</td>";
 					
 								echo "<td>";
 									
@@ -81,16 +92,11 @@
 			
 			?>
 		</div>
-	<div class="col-md-4">
-			<p>
-			    <!-- if you need user information, just put them into the $_SESSION variable and output them here -->
-			    <?php echo _('Hola'); ?>, <?php echo $_SESSION['user_name']; ?>.
-			    <?php echo _('Has iniciado sesión.'); ?>
-			    <?php echo _('Puedes cerrar la sesión <a href="./?logout" title="Cerrar sesión"?>pulsando aquí</a>.'); ?>
-			</p>
+		
+		<div class="col-md-4">
+			<h3><?php echo _("Ayuda"); ?></h3>
+			<p><?php echo _("Introduce tu nombre de usuario y contraseña para acceder al sistema."); ?></p>
+			<p><?php echo _("¿Todavía no tienes una cuenta? <a href=\"./register\" title=\"Crear una nueva cuenta\">Puedes crearla desde aquí.</a>"); ?></p>
 		</div>
 	</div>
-<div>
-    <!-- because people were asking: "index.php?logout" is just my simplified form of "index.php?logout=true" -->
-</div>
 <?php require_once("./footer.php"); ?>

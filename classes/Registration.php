@@ -115,23 +115,23 @@ class Registration
                 $query_check_user_name = $this->db_connection->query("SELECT * FROM users WHERE user_name = '" . $this->user_name . "';");
 
                 if ($query_check_user_name->num_rows == 1) {
-                    $this->errors[] = "Sorry, that user name is already taken. Please choose another one.";
+                    $this->errors[] = _("<div class=\"alert alert-danger\">Sorry, that user name is already taken. Please choose another one.</div>");
                 } else {
                     // write new users data into database
                     $query_new_user_insert = $this->db_connection->query("INSERT INTO users (user_name, user_password_hash, user_email) VALUES('" . $this->user_name . "', '" . $this->user_password_hash . "', '" . $this->user_email . "');");
 
                     if ($query_new_user_insert) {
-                        $this->messages[] = "Your account has been created successfully. You can now log in.";
+                        $this->messages[] = _("<div class=\"alert alert-success\">Your account has been created successfully. You can now log in.</div>");
                         $this->registration_successful = true;
                     } else {
-                        $this->errors[] = "Sorry, your registration failed. Please go back and try again.";
+                        $this->errors[] = _("<div class=\"alert alert-danger\">Sorry, your registration failed. Please go back and try again.</div>");
                     }
                 }
             } else {
-                $this->errors[] = "Sorry, no database connection.";
+                $this->errors[] = _("<div class=\"alert alert-danger\">Sorry, no database connection.</div>");
             }
         } else {
-            $this->errors[] = "An unknown error occurred.";
+            $this->errors[] = "<div class=\"alert alert-danger\">An unknown error occurred.</div";
         }
     }
 }
