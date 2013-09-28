@@ -73,8 +73,50 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 				 	
 				 	echo "<p><em>TOTAL</em>: ".$points." / ". $totalCorrectPoints ."</p>";
 				 	
-				 ?>
-			
+				 	// create a database connection, using the constants from config/db.php (which we loaded in index.php)
+		            $db_connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+		
+		            // if no connection errors (= working database connection)
+		            if (!$db_connection->connect_errno) {
+		
+		                // escape the POST stuff
+		                //$this->user_name = $this->db_connection->real_escape_string($_POST['user_name']);
+		                // database query, getting all the info of the selected user
+		                $userId = $db_connection->query("SELECT user_id FROM users WHERE user_name = '" . $_SESSION['user_name'] . "';");
+		                var_dump($userId);
+		                 if ($userId->num_rows == 1) {
+
+							 // get result row (as an object)
+							 $result_row = $userId->fetch_object();
+							 $userId = $result_row->user_id;
+							 echo "user id:".$userId;
+						}else{
+							
+							echo "Error al obtener el usuario";
+							
+						}
+		                
+		                $insertQuery = "INSERT INTO tests (user_id,file,points,total_points) VALUES ('".$userId."','prueba.xml','".$points."','".$totalCorrectPoints."');";
+		                
+		                echo $insertQuery;
+		                
+		                $checklogin = $db_connection->query($insertQuery);
+		
+		                if($checklogin){
+			                
+			                echo "se ha guardado el test";
+			                
+		                }else{
+			                echo "no se ha guardado el test";
+		                }
+		                
+		            } else {
+		                $this->errors[] = "Database connection problem.";
+		            }
+				 	
+				 	
+				 	
+				 ?>			
 			
 			<?php }else{ ?>
 				<p><?php echo _("Introduce tu nombre de usuario y contraseña para poder subir archivos."); ?></p>
