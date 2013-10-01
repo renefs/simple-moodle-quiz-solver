@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Práctica miw lenguajes y estándares web\n"
-"POT-Creation-Date: 2013-09-23 22:04+0100\n"
-"PO-Revision-Date: 2013-09-23 22:04+0100\n"
+"POT-Creation-Date: 2013-10-01 19:03+0100\n"
+"PO-Revision-Date: 2013-10-01 19:15+0100\n"
 "Last-Translator: Rene Fernandez <renefs87@gmail.com>\n"
 "Language-Team: René Fernández Sánchez <renefs87@gmail.com>\n"
 "Language: es\n"
@@ -15,13 +15,79 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ../../../.\n"
 
-#: ../../.././header.php:38
-msgid "Área privada"
-msgstr "Private area"
+#: ../../.././do-test.php:20 ../../.././resolve-test.php:20
+msgid "Hacer un test"
+msgstr "Do a test"
 
-#: ../../.././header.php:39
+#: ../../.././do-test.php:49
+msgid "El archivo xml se ha cargado correctamente."
+msgstr "Xml file was succesfully uploaded"
+
+#: ../../.././do-test.php:52
+msgid "Nombre: "
+msgstr "Name:"
+
+#: ../../.././do-test.php:53
+msgid "Tipo: "
+msgstr "Type:"
+
+#: ../../.././do-test.php:54
+msgid "Tamaño: "
+msgstr "Size:"
+
+#: ../../.././do-test.php:55
+msgid "Almacenado en: "
+msgstr "Stored in:"
+
+#: ../../.././do-test.php:64
+msgid "<strong>Archivo no válido.</strong> Se cargará QuizXML.xml por defecto."
+msgstr ""
+"<strong>File is not valid.</strong> QuizXML.xml will be loaded by default."
+
+#: ../../.././do-test.php:68
+msgid "Cargando fichero xml por defecto..."
+msgstr "Loading default xml file..."
+
+#: ../../.././do-test.php:87
+msgid "Corregir examen"
+msgstr "Correct the test"
+
+#: ../../.././do-test.php:93 ../../.././upload-test.php:44
+msgid ""
+"<a href=\"./login\" title=\"Login\">Introduce tu nombre de usuario y "
+"contraseña</a> para poder subir archivos."
+msgstr ""
+"<a href=\"./login\" title=\"Login\">Enter your username and password</a> to "
+"upload files."
+
+#: ../../.././do-test.php:94 ../../.././do-test.php:102
+#: ../../.././resolve-test.php:152 ../../.././resolve-test.php:160
+#: ../../.././upload-test.php:45 ../../.././upload-test.php:52
+#: ../../.././views/not_logged_in.php:53 ../../.././views/register.php:72
+msgid ""
+"¿Todavía no tienes una cuenta? <a href=\"./register\" title=\"Crear una "
+"nueva cuenta\">Puedes crearla desde aquí.</a>"
+msgstr ""
+"¿Don't have an account yet? <a href=\"./register\" title=\"Create a new "
+"account\">You can create it from here.</a>"
+
+#: ../../.././do-test.php:100 ../../.././marks.php:97
+#: ../../.././resolve-test.php:158 ../../.././upload-test.php:50
+#: ../../.././views/not_logged_in.php:51 ../../.././views/register.php:70
+msgid "Ayuda"
+msgstr "Help"
+
+#: ../../.././do-test.php:101
+msgid "Debes estar registrado para acceder a esta página."
+msgstr "You must be registered to access this page."
+
+#: ../../.././header.php:38
 msgid "Inicio"
 msgstr "Home"
+
+#: ../../.././header.php:39 ../../.././index.php:19 ../../.././marks.php:20
+msgid "Puntuaciones"
+msgstr "Marks"
 
 #: ../../.././header.php:43
 msgid "Registrarse"
@@ -31,7 +97,8 @@ msgstr "Register"
 msgid "Acceso"
 msgstr "Login"
 
-#: ../../.././header.php:46
+#: ../../.././header.php:46 ../../.././index.php:22
+#: ../../.././views/logged_in.php:5
 msgid "Tu cuenta"
 msgstr "Your account"
 
@@ -40,14 +107,14 @@ msgid "Salir"
 msgstr "Logout"
 
 #: ../../.././header.php:50
-msgid "Máster Ing. Web - Uniovi"
-msgstr "Web Engineering Master's Degree - Uniovi"
-
-#: ../../.././index.php:4
 msgid "Lenguajes y estándares de la web"
 msgstr "Lenguajes y estándares de la web"
 
-#: ../../.././index.php:5
+#: ../../.././index.php:3
+msgid "Módulo de PHP y XML"
+msgstr "PHP and XML module"
+
+#: ../../.././index.php:4
 msgid ""
 "Página de <strong>René Fernández Sánchez - UO179476</strong>, de la "
 "asignatura \"Lenguajes y estándares de la web\" del Máster de Ing. Web de "
@@ -57,17 +124,160 @@ msgstr ""
 "\"Lenguajes y estándares de la web\" of the University of Oviedo's Web "
 "Engineering Master's Degree."
 
-#: ../../.././index.php:6
+#: ../../.././index.php:5 ../../.././index.php:10
 msgid "Subir test en XML"
 msgstr "Upload XML test"
 
-#: ../../.././index.php:6
+#: ../../.././index.php:5 ../../.././index.php:13
 msgid "Realizar test de ejemplo"
 msgstr "Make example test"
 
-#: ../../.././views/not_logged_in.php:28 ../../.././views/register.php:30
+#: ../../.././index.php:11
+msgid ""
+"Esta opción permite subir un test en formato XML para posteriormente "
+"realizarlo."
+msgstr "This option allows you to upload a xml format test to do it."
+
+#: ../../.././index.php:14
+msgid "Se utiliza para cargar automáticamente y realizar el test QuizXML.xml."
+msgstr "It is used to load automatically and do a QuizXML.xml test."
+
+#: ../../.././index.php:20
+msgid ""
+"Muestra un listado con las puntuaciones y tests realizados por los distintos "
+"usuarios, indicando la fecha de cada realización."
+msgstr ""
+"Displays a list with the tests marks done by the users, displaying the "
+"realization date of each one."
+
+#: ../../.././index.php:23
+msgid ""
+"Si te registras y realizas un test habiendo accedido a la página, las "
+"puntuaciones tests que realices podrán ser visualizados aquí."
+msgstr ""
+"If you register and you do a test, your marks will appear on this page."
+
+#: ../../.././marks.php:22
+msgid ""
+"A continuación se muestran las notas de todos los usuarios que han realizado "
+"alguna prueba de test."
+msgstr "These are the marks of all users that have done tests."
+
+#: ../../.././marks.php:42 ../../.././views/not_logged_in.php:28
+#: ../../.././views/register.php:30
 msgid "Usuario"
 msgstr "User"
+
+#: ../../.././marks.php:43 ../../.././views/logged_in.php:38
+msgid "Archivo"
+msgstr "File"
+
+#: ../../.././marks.php:44 ../../.././views/logged_in.php:39
+msgid "Fecha"
+msgstr "Date"
+
+#: ../../.././marks.php:45 ../../.././views/logged_in.php:40
+msgid "Puntos obtenidos"
+msgstr "Points obtained"
+
+#: ../../.././marks.php:46 ../../.././views/logged_in.php:41
+msgid "Puntos totales"
+msgstr "Total points"
+
+#: ../../.././marks.php:98
+msgid ""
+"Esta tabla muestra  los usuarios, las puntuaciones que han obtenido y el "
+"archivo que han utilizado para realizar el test."
+msgstr "This table displays the users, marks, dates and file of the test."
+
+#: ../../.././resolve-test.php:136
+msgid "Se ha guardado el test"
+msgstr "Test was saved on the database."
+
+#: ../../.././resolve-test.php:139
+msgid "No se ha guardado el test"
+msgstr "Test could not be saved."
+
+#: ../../.././resolve-test.php:143
+msgid "Problema de conexión con la base de datos"
+msgstr "Error when accessing the database."
+
+#: ../../.././resolve-test.php:151
+msgid "Introduce tu nombre de usuario y contraseña para poder subir archivos."
+msgstr "Enter your username and password to upload files."
+
+#: ../../.././resolve-test.php:159 ../../.././upload-test.php:51
+#: ../../.././views/not_logged_in.php:52 ../../.././views/register.php:71
+msgid "Introduce tu nombre de usuario y contraseña para acceder al sistema."
+msgstr "Enter your username and password to login."
+
+#: ../../.././upload-test.php:20
+msgid "Subir un archivo test"
+msgstr "Upload a test file"
+
+#: ../../.././upload-test.php:29
+msgid "Seleccionar archivo"
+msgstr "Select a file"
+
+#: ../../.././upload-test.php:31
+msgid "Elige un archivo de test de Moodle. Debe ser .xml y ser menor de 500kb."
+msgstr ""
+"Choose a Moodle test file. It must be .xml and it's weight lower than 500kb."
+
+#: ../../.././upload-test.php:38
+msgid "Subir"
+msgstr "Upload"
+
+#: ../../.././classes/Registration.php:118
+msgid ""
+"<div class=\"alert alert-danger\">Sorry, that user name is already taken. "
+"Please choose another one.</div>"
+msgstr ""
+"<div class=\"alert alert-danger\">Sorry, that user name is already taken. "
+"Please choose another one.</div>"
+
+#: ../../.././classes/Registration.php:124
+msgid ""
+"<div class=\"alert alert-success\">Your account has been created "
+"successfully. You can now log in.</div>"
+msgstr ""
+"<div class=\"alert alert-success\">Your account has been created "
+"successfully. You can now log in.</div>"
+
+#: ../../.././classes/Registration.php:127
+msgid ""
+"<div class=\"alert alert-danger\">Sorry, your registration failed. Please go "
+"back and try again.</div>"
+msgstr ""
+"<div class=\"alert alert-danger\">Sorry, your registration failed. Please go "
+"back and try again.</div>"
+
+#: ../../.././classes/Registration.php:131
+msgid "<div class=\"alert alert-danger\">Sorry, no database connection.</div>"
+msgstr "<div class=\"alert alert-danger\">Sorry, no database connection.</div>"
+
+#: ../../.././views/logged_in.php:7
+msgid ""
+"A continuación se muestra un listado con todos los tests que has realizado y "
+"todas las notas que has obtenido."
+msgstr ""
+"These is a list with all the tests that you have done and all your marks."
+
+#: ../../.././views/logged_in.php:87
+msgid "Hola"
+msgstr "Hi"
+
+#: ../../.././views/logged_in.php:88
+msgid "Has iniciado sesión."
+msgstr "You logged in."
+
+#: ../../.././views/logged_in.php:89
+msgid ""
+"Puedes cerrar la sesión <a href=\"./?logout\" title=\"Cerrar sesión\"?"
+">pulsando aquí</a>."
+msgstr ""
+"You can logout by <a href=\"./?logout\" title=\"Cerrar sesión\"?>clicking "
+"here</a>."
 
 #: ../../.././views/not_logged_in.php:35 ../../.././views/register.php:46
 msgid "Contraseña"
@@ -76,22 +286,6 @@ msgstr "Password"
 #: ../../.././views/not_logged_in.php:44
 msgid "Acceder"
 msgstr "Login"
-
-#: ../../.././views/not_logged_in.php:51 ../../.././views/register.php:70
-msgid "Ayuda"
-msgstr "Help"
-
-#: ../../.././views/not_logged_in.php:52 ../../.././views/register.php:71
-msgid "Introduce tu nombre de usuario y contraseña para acceder al sistema."
-msgstr "Enter your username and password to login."
-
-#: ../../.././views/not_logged_in.php:53 ../../.././views/register.php:72
-msgid ""
-"¿Todavía no tienes una cuenta? <a href=\"./register\" title=\"Crear una "
-"nueva cuenta\">Puedes crearla desde aquí.</a>"
-msgstr ""
-"¿Don't have an account yet? <a href=\"./register\" title=\"Create a new "
-"account\">You can create it from here.</a>"
 
 #: ../../.././views/register.php:24
 msgid "Registro"
@@ -116,3 +310,9 @@ msgstr "Repeat password"
 #: ../../.././views/register.php:62
 msgid "Regístrame"
 msgstr "Register"
+
+#~ msgid "Área privada"
+#~ msgstr "Private area"
+
+#~ msgid "Máster Ing. Web - Uniovi"
+#~ msgstr "Web Engineering Master's Degree - Uniovi"
