@@ -34,8 +34,8 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 					 	$key = explode("_", $key);
 					 	
 					 	//Se obtiene el 2
-					 	
-					 	$identifiers[]=$key[1];
+					 	if(isset($key[1]))
+					 		$identifiers[]=$key[1];
 					 	
 				 	}
 				 	
@@ -47,55 +47,58 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 				 	
 				 	foreach($identifiers as $identifier){
 				 		
-				 		echo "<p><strong>".$_POST['questiontext_'.$identifier]."</strong></p>";
+				 		if($identifier != ""){
 				 		
-				 		if(isset($_POST['select_'.$identifier])){
-				 		
-				 			$prefix = '<p>';
-				 			$sufix = '</p>';
-				 			
-				 			if (substr($_POST['correct_'.$identifier], 0, strlen($prefix)) == $prefix) {
-					 			$_POST['correct_'.$identifier] = substr($_POST['correct_'.$identifier], strlen($prefix));
+					 		echo "<p><strong>".$_POST['questiontext_'.$identifier]."</strong></p>";
+					 		
+					 		if(isset($_POST['select_'.$identifier])){
+					 		
+					 			$prefix = '<p>';
+					 			$sufix = '</p>';
+					 			
+					 			if (substr($_POST['correct_'.$identifier], 0, strlen($prefix)) == $prefix) {
+						 			$_POST['correct_'.$identifier] = substr($_POST['correct_'.$identifier], strlen($prefix));
+						 		}
+						 		
+						 		if (substr($_POST['correct_'.$identifier], 0, strlen($sufix)) == $sufix) {
+						 			$_POST['correct_'.$identifier] = substr($_POST['correct_'.$identifier], strlen($sufix));
+						 		}
+						 		
+						 		if (substr($_POST['select_'.$identifier], 0, strlen($prefix)) == $prefix) {
+						 			$_POST['select_'.$identifier] = substr($_POST['select_'.$identifier], strlen($prefix));
+						 		}
+						 		
+						 		if (substr($_POST['select_'.$identifier], 0, strlen($sufix)) == $sufix) {
+						 			$_POST['select_'.$identifier] = substr($_POST['select_'.$identifier], strlen($sufix));
+						 		}
+					 		
+					 		
+						 		if($_POST['select_'.$identifier] == $_POST['correct_'.$identifier]){
+						 			echo "<p class='text-success'><em>Seleccionada</em>: ".$_POST['select_'.$identifier]."</p>";
+						 			echo "<p class='text-success'><em>Correcta</em>: ".$_POST['correct_'.$identifier]."</p>";
+						 		}else{
+							 		echo "<p class='text-danger'><em>Seleccionada</em>: ".$_POST['select_'.$identifier]."</p>";
+						 			echo "<p class='text-danger'><em>Correcta</em>: ".$_POST['correct_'.$identifier]."</p>";
+						 		}
+						 		
+						 		if($_POST['select_'.$identifier] == $_POST['correct_'.$identifier]){
+						 		
+						 			echo "<p class='text-success'><em>Puntuación</em>: ".$_POST['fraction_'.$identifier.'_correct']."</p>";
+						 			$points+=$_POST['fraction_'.$identifier.'_correct'];
+						 		
+						 		}else{
+						 			echo "<p class='text-danger'><em>Puntuación</em>: ".$_POST['fraction_'.$identifier.'_incorrect']."</p>";
+						 			$points+=$_POST['fraction_'.$identifier.'_incorrect'];
 					 		}
+						 		
+						 	}else{
+							 	
+							 	echo "<p class='text-warning'><em>Correcta</em>: ".$_POST['correct_'.$identifier]."</p>";
+							 	echo "<p class='text-warning'><em>Puntuación</em>: 0</p>";
+						 	}				 	
 					 		
-					 		if (substr($_POST['correct_'.$identifier], 0, strlen($sufix)) == $sufix) {
-					 			$_POST['correct_'.$identifier] = substr($_POST['correct_'.$identifier], strlen($sufix));
-					 		}
-					 		
-					 		if (substr($_POST['select_'.$identifier], 0, strlen($prefix)) == $prefix) {
-					 			$_POST['select_'.$identifier] = substr($_POST['select_'.$identifier], strlen($prefix));
-					 		}
-					 		
-					 		if (substr($_POST['select_'.$identifier], 0, strlen($sufix)) == $sufix) {
-					 			$_POST['select_'.$identifier] = substr($_POST['select_'.$identifier], strlen($sufix));
-					 		}
-				 		
-				 		
-					 		if($_POST['select_'.$identifier] == $_POST['correct_'.$identifier]){
-					 			echo "<p class='text-success'><em>Seleccionada</em>: ".$_POST['select_'.$identifier]."</p>";
-					 			echo "<p class='text-success'><em>Correcta</em>: ".$_POST['correct_'.$identifier]."</p>";
-					 		}else{
-						 		echo "<p class='text-danger'><em>Seleccionada</em>: ".$_POST['select_'.$identifier]."</p>";
-					 			echo "<p class='text-danger'><em>Correcta</em>: ".$_POST['correct_'.$identifier]."</p>";
-					 		}
-					 		
-					 		if($_POST['select_'.$identifier] == $_POST['correct_'.$identifier]){
-					 		
-					 			echo "<p class='text-success'><em>Puntuación</em>: ".$_POST['fraction_'.$identifier.'_correct']."</p>";
-					 			$points+=$_POST['fraction_'.$identifier.'_correct'];
-					 		
-					 		}else{
-					 			echo "<p class='text-danger'><em>Puntuación</em>: ".$_POST['fraction_'.$identifier.'_incorrect']."</p>";
-					 			$points+=$_POST['fraction_'.$identifier.'_incorrect'];
-				 		}
-					 		
-					 	}else{
-						 	
-						 	echo "<p class='text-warning'><em>Correcta</em>: ".$_POST['correct_'.$identifier]."</p>";
-						 	echo "<p class='text-warning'><em>Puntuación</em>: 0</p>";
-					 	}				 	
-				 		
-				 		$totalCorrectPoints+=$_POST['fraction_'.$identifier.'_correct'];
+					 		$totalCorrectPoints+=$_POST['fraction_'.$identifier.'_correct'];
+					 	}
 				 		
 				 	}
 				 	
@@ -124,7 +127,7 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 							
 						}
 		                
-		                $insertQuery = "INSERT INTO tests (user_id,file,points,total_points) VALUES ('".$userId."','prueba.xml','".$points."','".$totalCorrectPoints."');";
+		                $insertQuery = "INSERT INTO tests (user_id,file,points,total_points) VALUES ('".$userId."','".stripslashes($_POST["fileName"])."','".$points."','".$totalCorrectPoints."');";
 		                
 		                $checklogin = $db_connection->query($insertQuery);
 		

@@ -41,7 +41,7 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 				    
 				</form>
 			<?php }else{ ?>
-					<p><?php echo _("Introduce tu nombre de usuario y contraseña para poder subir archivos."); ?></p>
+					<p><?php echo _("<a href=\"./login\" title=\"Login\">Introduce tu nombre de usuario y contraseña</a> para poder subir archivos."); ?></p>
 					<p><?php echo _("¿Todavía no tienes una cuenta? <a href=\"./register\" title=\"Crear una nueva cuenta\">Puedes crearla desde aquí.</a>"); ?></p>
 			<?php } ?>
 		</div>

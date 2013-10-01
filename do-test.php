@@ -28,6 +28,7 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 				<?php
 					
 					$quizFile="quiz.xml";
+					$fileName="QuizXML.xml";
 					
 					if(isset($_POST['upload_xml']) && stripslashes($_POST['upload_xml']=='3d22f3e85803089360bddc2dac2d39fe')){
 						$allowedExts = array("xml");
@@ -54,6 +55,8 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 						    echo '<li>'._('Almacenado en: ') . $_FILES["fileXML"]["tmp_name"].'</li>';
 						    echo '</ul>';
 						    
+						    $fileName = $_FILES["fileXML"]["name"];
+						    
 						    $quizFile=$_FILES["fileXML"]["tmp_name"];
 						    
 						    }
@@ -64,7 +67,9 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 						
 						echo '<h2>'._('Cargando fichero xml por defecto...').'</h2>';
 						
-					}					
+					}
+					
+						echo '<input type="hidden" name="fileName" id="fileName" value="'.$fileName.'"/> ';					
 					
 					 $doc = new DomDocument();
 					 $doc->load($quizFile);
@@ -85,7 +90,7 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 			
 			
 			<?php }else{ ?>
-				<p><?php echo _("Introduce tu nombre de usuario y contraseña para poder subir archivos."); ?></p>
+				<p><?php echo _("<a href=\"./login\" title=\"Login\">Introduce tu nombre de usuario y contraseña</a> para poder subir archivos."); ?></p>
 				<p><?php echo _("¿Todavía no tienes una cuenta? <a href=\"./register\" title=\"Crear una nueva cuenta\">Puedes crearla desde aquí.</a>"); ?></p>
 			<?php } ?>
 			
@@ -93,7 +98,7 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 		
 		<div class="col-md-4">
 			<h3><?php echo _("Ayuda"); ?></h3>
-			<p><?php echo _("Introduce tu nombre de usuario y contraseña para acceder al sistema."); ?></p>
+			<p><?php echo _("Debes estar registrado para acceder a esta página."); ?></p>
 			<p><?php echo _("¿Todavía no tienes una cuenta? <a href=\"./register\" title=\"Crear una nueva cuenta\">Puedes crearla desde aquí.</a>"); ?></p>
 		</div>
 	</div>

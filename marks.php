@@ -95,8 +95,8 @@ if(basename($_SERVER['PHP_SELF']) != "login.php"){
 		
 		<div class="col-md-4">
 			<h3><?php echo _("Ayuda"); ?></h3>
-			<p><?php echo _("Introduce tu nombre de usuario y contraseña para acceder al sistema."); ?></p>
-			<p><?php echo _("¿Todavía no tienes una cuenta? <a href=\"./register\" title=\"Crear una nueva cuenta\">Puedes crearla desde aquí.</a>"); ?></p>
+			<p><?php echo _("Esta tabla muestra  los usuarios, las puntuaciones que han obtenido y el archivo que han utilizado para realizar el test."); ?></p>
+			
 		</div>
 	</div>
 <?php require_once("./footer.php"); ?>
