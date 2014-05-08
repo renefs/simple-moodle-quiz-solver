@@ -1,6 +1,6 @@
 #Simple Quiz XSLT Solver
 
-This app allows to solve Moodle tests using XSLT, XML and PHP.
+This app allows to solve Moodle quizs using XSLT, XML and PHP.
 
 ##Overview
 
