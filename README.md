@@ -1,8 +1,8 @@
-#Simple Quiz XSLT Solver
+# Simple Quiz XSLT Solver
 
 This app allows to solve Moodle quizs using XSLT, XML and PHP.
 
-##Overview
+## Overview
 
 La página dispone de un sistema de registro de usuarios. Para este sistema se utiliza una librería externa. El sistema de registro de usuarios realiza conexiones a una base de datos MySQL, donde los almacena.
 
@@ -12,7 +12,7 @@ Para la apariencia de la página se utilizan las hojas de estilos y javascript d
 
 La validación de los archivos xml subidos (y del que ya se encuentra en el servidor) se realiza utilizando xslt y las funciones de procesado de XML para PHP. Se genera un formulario que es enviado a la página resolve-test.php y esta página es la encargada de procesar los resultados, mostrándolos y almacenando la puntuación obtenida, la fecha y el usuario.
 
-##Localización
+## Localización
 
 Para la localización de los textos del sitio se ha utilizado gettext() de PHP, pudiendo el usuario establecer el idioma que desee pulsando los botones que hay al pie de la página. Por otro lado, se establece el idioma por defecto basado en los idiomas establecidos en el navegador del visitante (por consentimiento). Este tipo de localización se realiza enviando una cookie con el idioma. Esta cookie se actualiza cuando el usuario pulsa uno de los botones del pie.
 
@@ -24,7 +24,7 @@ Se han incluido traducciones en Español e Inglés en los archivos po y mo del d
 
 Los datos de los tests realizados por los usuarios se almacenan en la base de datos mySQL de la aplicación, así como los usuarios registrados en ella. Cada usuario puede acceder a sus tests desde la página "Mi Cuenta".
 
-###Crear las tablas de la base de datos
+### Crear las tablas de la base de datos
 
 	CREATE DATABASE IF NOT EXISTS `login`;
 	
